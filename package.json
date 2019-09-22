@@ -1,0 +1,25 @@
+{
+  "name": "behance-node",
+  "version": "0.0.1",
+  "description": "An asynchronous library to scrape Behance.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test/test.js",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ilies-t/behance-node"
+  },
+  "keywords": [
+    "Behance",
+    "Node"
+  ],
+  "author": "ilies",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "fs": "0.0.1-security",
+    "request-promise": "^4.2.4"
+  }
+}
