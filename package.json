@@ -1,6 +1,6 @@
 {
   "name": "behance-node",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "An asynchronous library to scrape Behance.",
   "main": "index.js",
   "scripts": {
