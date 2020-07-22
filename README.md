@@ -1,6 +1,9 @@
 # Behance-node
+[![NPM Version](https://img.shields.io/npm/v/behance-node.svg)](https://npmjs.org/package/behance-node)
+[![Strict TypeScript Checked](https://badgen.net/badge/Built%20With/TypeScript)](https://www.typescriptlang.org)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-An asynchronous library to scrape Behance.
+An asynchronous module for scrapping Behance using JavaScript.
 
 ## Install
 ```shell
@@ -13,90 +16,80 @@ const Behance = require('behance-node');
 ```
 
 # Documentation
-* [User informations](#user-informations)
-* [User detailed informations](#user-detailed-informations)
-* [Save user detailed informations](#save-user-detailed-informations)
-* [Project informations](#project-informations)
-* [Save project informations](#save-project-informations)
+* [User data](#user-data)
+* [Project data](#project-data)
 * [Random project](#random-project)
 
-## User informations
-Return result about user
-```js
-Behance.user(`nicholaslosacco`)
-    .then((result) => {
-        console.log(result)
-    })
-    .catch((error) => {
-        console.log(error)
-    });
-```
+## User data
+Return data about user.
+* Method:
+    * `user(username: string, detailed?: boolean)`
+* Parameters:
 
-## User detailed informations
-Return detailed result about user
-```js
-Behance.detailledUser(`nicholaslosacco`)
-    .then((detailledResult) => {
-        console.log(detailledResult)
-    })
-    .catch((error) => {
-        console.log(error)
-    });
-```
+    | Name       | Type                                                                                              | Info                                                                                       |
+    | ---------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+    | `username` | string                                                                                            | Desired username                                                                           |
+    | `detailed` | boolean                                                                                           | Return more detail about user or not                                                       |
 
-## Save user detailed informations
-Save user detailed result in JSON file
-```js
-let user = `nicholaslosacco`;
-let directory = `datas-folder`;
+* Example:
+    * Get detailed data about this user `https://www.behance.net/moesalah`.
+        ```js
+        Behance.user('moesalah', true)
+            .then( result => console.log(result) )
+            .catch( error => console.log(error) );
+        ```
 
-Behance.saveDetailledUser(user, directory)
-    .then(() => {
-        console.log(`${user}.json saved in ${directory}`)
-    })
-    .catch((error) => {
-        console.log(error)
-    });
-```
+## Project data
+Return data about project.
+* Method:
+    * `project(path: string)`
+* Parameter:
 
-## Project informations
-Return detailed result about project
-```js
-Behance.project(`75651921/Cirka-Free-Typeface`)
-    .then((result) => {
-        console.log(result);
-    })
-    .catch((error) => {
-        console.log(error)
-    })
-```
+    | Name       | Type                                                                                              | Info                                                                                       |
+    | ---------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+    | `path`     | string                                                                                            | Desired project path, must contain project id and name                                     |
 
-## Save project informations
-Save project result in JSON file
-```js
-let project = `75651921/Cirka-Free-Typeface`;
-let directory = `datas-folder`;
-
-Behance.saveProject(project, directory)
-    .then(() => {
-        console.log(`👌 saved`);
-    })
-    .catch((error) => {
-        console.log(error)
-    })
-```
+* Example:
+    * Get data about this project `https://www.behance.net/gallery/77156181/Amazon-Rebranding-UI-Concept`.
+        ```js
+        Behance.project('77156181/Amazon-Rebranding-UI-Concept')
+            .then( result => console.log(result) )
+            .catch( error => console.log(error) );
+        ```
 
 ## Random project
-Return random project from trending
-```js
-Behance.randomProject()
-    .then((result) => {
-        console.log(result)
-    })
-    .catch((error) => {
-        console.log(error)
-    })
-```
+Get a random project data using sort.
+* Method:
+    * `
+      randomProject(
+          sort?: 'recommended' | 'curated' | 'most_appreciated' | 'most_viewed' | 'most_commented' | 'most_recent',
+          time?: 'today' | 'this_week' | 'this_month' | 'all_time'
+      )
+      `
+* Parameters:
+
+    | Name       | Type                                                                                              | Info                                                                                       |
+    | ---------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+    | `sort`     | `recommended`, `curated`, `most_appreciated`, `most_viewed`, `most_commented`, `most_recent`      | Only `most_appreciated`, `most_viewed`, `most_commented` can be used with `time` parameter |
+    | `time`     | `today`, `this_week`, `this_month`, `all_time`                                                    | Sort result by date                                                                        |
+
+* Examples:
+    * Get a random project from most viewed this week.
+        ```js
+        Behance.randomProject('most_viewed', 'this_week')
+            .then( result => console.log(result) )
+            .catch( error => console.log(error) );
+        ```
+    * Get a random curated project.
+        ```js
+        Behance.randomProject('curated')
+            .then( result => console.log(result) )
+            .catch( error => console.log(error) );
+        ```
+
+# Links
+* [NPM Package](https://www.npmjs.com/package/behance-node)
+* [Moe Salah - artist from documentation examples](https://www.behance.net/moesalah)
 
 # License
 [Apache License 2.0](https://choosealicense.com/licenses/apache-2.0/)
