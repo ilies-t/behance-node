@@ -1,7 +1,7 @@
 {
   "name": "behance-node",
-  "version": "0.0.3",
-  "description": "An asynchronous library to scrape Behance.",
+  "version": "0.1.0",
+  "description": "An asynchronous module for scrapping Behance using JavaScript.",
   "main": "index.js",
   "scripts": {
     "test": "node test/test.js",
@@ -19,7 +19,6 @@
   "license": "Apache-2.0",
   "dependencies": {
     "cheerio": "^1.0.0-rc.3",
-    "fs": "0.0.1-security",
-    "request-promise": "^4.2.4"
+    "request-promise": "^4.2.5"
   }
 }
