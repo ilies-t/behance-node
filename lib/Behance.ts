@@ -1,5 +1,5 @@
 /**
- * Behance-node v0.1.0
+ Behance-node v1.0.0
  *
  * @link <a href='https://github.com/ilies-t/behance-node'>GitHub repository</a>
  * @author <a href='https://github.com/ilies-t'>ilies t</a>
@@ -12,7 +12,7 @@ import { MainMethods } from './MainMethods';
 /**
  * Main package class
  */
-export class Behance {
+export default class Behance {
 
     // methods
 
@@ -206,5 +206,3 @@ export class Behance {
 
     }
 }
-
-module.exports = Behance;

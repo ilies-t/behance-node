@@ -5,11 +5,13 @@
     "declaration": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "lib": ["es6", "dom"],
+    "lib": ["es2016", "dom"],
     "module": "CommonJS",
     "moduleResolution": "node",
     "sourceMap": true,
-    "target": "ES2016"
+    "target": "ES2022",
+    "resolveJsonModule": true,
+    "esModuleInterop": true
   },
   "include": [
     "lib/*.ts"

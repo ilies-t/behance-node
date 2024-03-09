@@ -1,5 +1,5 @@
 /**
- * Behance-node v0.1.0
+ * Behance-node v1.0.0
  *
  * @link <a href="https://github.com/ilies-t/behance-node">GitHub repository</a>
  * @author <a href="https://github.com/ilies-t">ilies t</a>
@@ -7,11 +7,11 @@
  */
 
 // import the required packages
-const rp = require('request-promise');
-const cheerio = require('cheerio');
+import * as cheerio from 'cheerio';
+import axios from 'axios'
 
 // import CSS value to get the JSON elements in HTML
-const settings = require('./settings.json');
+import * as settings from './settings.json';
 
 export class MainMethods {
 
@@ -23,11 +23,12 @@ export class MainMethods {
     public static async getJSONFromUrl(url: string): Promise<any> {
 
         // search CSS value with cheerio
-        const html = await rp(url);
-        const $ = cheerio.load(html);
+        const html = await axios.get(url);
+        const htmlData = html.data;
+        const $ = cheerio.load(htmlData);
 
         // filter to get only innerHTML
-        const result = $(settings.jsonResponseCss, html)[0].children[0].data;
+        const result = $(settings.jsonResponseCss, htmlData)[0]['children'][0].data;
 
         // jsonify and return the result
         return JSON.parse(result);
@@ -38,7 +39,7 @@ export class MainMethods {
      *
      * @param user User containing data to delete.
      */
-    public static async deleteInsignificantUserData(user: any) {
+    public static async deleteInsignificantUserData(user: any): Promise<void> {
         delete user.config;
         delete user.gates;
         delete user.user;
@@ -60,7 +61,7 @@ export class MainMethods {
      *
      * @param project Project containing data to delete.
      */
-    public static async deleteInsignificantProjectData(project: any) {
+    public static async deleteInsignificantProjectData(project: any): Promise<void> {
         delete project.project.credits;
         delete project.project.cssPaths;
         delete project.project.admin;

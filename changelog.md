@@ -30,3 +30,12 @@
 * Add filters for `randomProject()`.
 
 * Change documentation skeleton.
+
+
+1.0.0 / 2023-09-03
+==================
+* Use Axios for HTTP requests.
+
+* Use Jest for testing.
+
+* Fix security vulnerabilities.
